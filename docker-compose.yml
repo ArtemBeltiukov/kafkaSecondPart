@@ -82,6 +82,8 @@ services:
     user: root
     networks:
       - elk
+    volumes:
+    - 'log:/var/log/'
   zookeeper1:
     mem_limit: 256mb
     image: confluentinc/cp-zookeeper
@@ -119,6 +121,7 @@ services:
 
     volumes:
       - "./web/src:/web/src"
+      - 'log:/var/log/'
     ports:
       - "8282:8282"
     environment:
@@ -140,6 +143,7 @@ services:
 
     volumes:
       - "./web/src:/web/src"
+      - 'log:/var/log/'
     ports:
       - "8888:8888"
     networks:
@@ -151,3 +155,4 @@ networks:
 
 volumes:
   elasticsearch:
+  log:

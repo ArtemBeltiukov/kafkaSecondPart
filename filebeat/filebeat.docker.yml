@@ -2,8 +2,9 @@ filebeat.inputs:
   - type: log
     enabled: true
     paths:
-      - ./log/application.log
+      - /var/log/application.log
 output.kafka:
+  enabled: true
   codec.format:
     string: '%{[@timestamp]} %{[message]}'
   hosts: ["kafka1:9092"]
